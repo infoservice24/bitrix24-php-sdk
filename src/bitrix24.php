@@ -261,8 +261,7 @@ class Bitrix24 implements iBitrix24
             throw new Bitrix24Exception('application redirect URI not found, you must call setRedirectUri method before');
         }
 
-//		$url = 'https://'.self::OAUTH_SERVER.'/oauth/token/'.
-        $url = 'https://' . $this->getDomain() . '/oauth/token/' .
+        $url = 'https://'.self::OAUTH_SERVER.'/oauth/token/'.
             '?client_id=' . urlencode($applicationId) .
             '&grant_type=refresh_token' .
             '&client_secret=' . $applicationSecret .
@@ -786,8 +785,7 @@ class Bitrix24 implements iBitrix24
             throw new Bitrix24Exception('application redirect URI not found, you must call setRedirectUri method before');
         }
 
-//        $url = 'https://'.self::OAUTH_SERVER.'/oauth/token/'.
-        $url = 'https://' . $this->getDomain() . '/oauth/token/' .
+        $url = 'https://'.self::OAUTH_SERVER.'/oauth/token/'.
             '?client_id=' . urlencode($applicationId) .
             '&grant_type=authorization_code' .
             '&client_secret=' . $applicationSecret .
@@ -829,8 +827,7 @@ class Bitrix24 implements iBitrix24
         } elseif (null === $accessToken) {
             throw new Bitrix24Exception('application id not found, you must call setAccessToken method before');
         }
-//		$url = 'https://'.self::OAUTH_SERVER.'/rest/app.info?auth='.$accessToken;
-        $url = 'https://' . $domain . '/rest/app.info?auth=' . $accessToken;
+        $url = 'https://'.self::OAUTH_SERVER.'/rest/app.info?auth='.$accessToken;
         $requestResult = $this->executeRequest($url);
         if (isset($requestResult['error'])) {
             if (in_array($requestResult['error'], array('expired_token', 'invalid_token', 'WRONG_TOKEN'), false)) {
